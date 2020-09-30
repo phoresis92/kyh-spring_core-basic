@@ -1,6 +1,6 @@
-package tk.youngdk.spring_corebasic.service;
+package tk.youngdk.spring_corebasic.member.service;
 
-import tk.youngdk.spring_corebasic.domain.member.Member;
+import tk.youngdk.spring_corebasic.member.domain.Member;
 
 public interface MemberService {
 

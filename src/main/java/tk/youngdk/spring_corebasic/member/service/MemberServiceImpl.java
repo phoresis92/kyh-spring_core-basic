@@ -1,8 +1,8 @@
-package tk.youngdk.spring_corebasic.service;
+package tk.youngdk.spring_corebasic.member.service;
 
-import tk.youngdk.spring_corebasic.domain.member.Member;
-import tk.youngdk.spring_corebasic.repository.MemberRepository;
-import tk.youngdk.spring_corebasic.repository.MemoryMemberRepository;
+import tk.youngdk.spring_corebasic.member.domain.Member;
+import tk.youngdk.spring_corebasic.member.repository.MemberRepository;
+import tk.youngdk.spring_corebasic.member.repository.MemoryMemberRepository;
 
 public class MemberServiceImpl implements MemberService {
 

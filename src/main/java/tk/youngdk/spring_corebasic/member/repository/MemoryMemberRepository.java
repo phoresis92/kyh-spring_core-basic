@@ -1,8 +1,7 @@
-package tk.youngdk.spring_corebasic.repository;
+package tk.youngdk.spring_corebasic.member.repository;
 
-import tk.youngdk.spring_corebasic.domain.member.Member;
+import tk.youngdk.spring_corebasic.member.domain.Member;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

@@ -2,10 +2,10 @@ package tk.youngdk.spring_corebasic.member;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import tk.youngdk.spring_corebasic.domain.member.Grade;
-import tk.youngdk.spring_corebasic.domain.member.Member;
-import tk.youngdk.spring_corebasic.service.MemberService;
-import tk.youngdk.spring_corebasic.service.MemberServiceImpl;
+import tk.youngdk.spring_corebasic.member.domain.Grade;
+import tk.youngdk.spring_corebasic.member.domain.Member;
+import tk.youngdk.spring_corebasic.member.service.MemberService;
+import tk.youngdk.spring_corebasic.member.service.MemberServiceImpl;
 
 public class MemberServiceTest {
 

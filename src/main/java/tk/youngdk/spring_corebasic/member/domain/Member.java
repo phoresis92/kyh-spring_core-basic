@@ -1,4 +1,4 @@
-package tk.youngdk.spring_corebasic.domain.member;
+package tk.youngdk.spring_corebasic.member.domain;
 
 public class Member {
 
