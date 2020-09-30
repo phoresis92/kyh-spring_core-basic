@@ -1,5 +1,7 @@
 package tk.youngdk.spring_corebasic;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import tk.youngdk.spring_corebasic.member.domain.Grade;
 import tk.youngdk.spring_corebasic.member.domain.Member;
 import tk.youngdk.spring_corebasic.member.service.MemberService;
@@ -8,7 +10,11 @@ public class MemberApp {
 
     public static void main(String[] args) {
 
-        MemberService memberService = AppConfig.memberService();
+//        MemberService memberService = AppConfig.memberService();
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+
 
         Member m1 = new Member(1L, "m1", Grade.VIP);
 
