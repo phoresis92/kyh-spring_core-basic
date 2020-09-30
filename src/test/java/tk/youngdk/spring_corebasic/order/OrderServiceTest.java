@@ -1,9 +1,13 @@
 package tk.youngdk.spring_corebasic.order;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tk.youngdk.spring_corebasic.AppConfig;
+import tk.youngdk.spring_corebasic.discount.RateDiscountPolicy;
 import tk.youngdk.spring_corebasic.member.domain.Grade;
 import tk.youngdk.spring_corebasic.member.domain.Member;
+import tk.youngdk.spring_corebasic.member.repository.MemoryMemberRepository;
 import tk.youngdk.spring_corebasic.member.service.MemberService;
 import tk.youngdk.spring_corebasic.member.service.MemberServiceImpl;
 import tk.youngdk.spring_corebasic.order.domain.Order;
@@ -14,8 +18,14 @@ import static org.assertj.core.api.Assertions.*;
 
 public class OrderServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    MemberService memberService;
+    OrderService orderService;
+
+    @BeforeEach
+    public void beforeEach (){
+        memberService = AppConfig.memberService();
+        orderService = AppConfig.orderService();
+    }
 
     @Test
     void createOrder(){

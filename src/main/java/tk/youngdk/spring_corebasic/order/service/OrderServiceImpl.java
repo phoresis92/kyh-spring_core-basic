@@ -1,16 +1,24 @@
 package tk.youngdk.spring_corebasic.order.service;
 
 import tk.youngdk.spring_corebasic.discount.DiscountPolicy;
-import tk.youngdk.spring_corebasic.discount.FixDiscountPolicy;
 import tk.youngdk.spring_corebasic.member.domain.Member;
 import tk.youngdk.spring_corebasic.member.repository.MemberRepository;
-import tk.youngdk.spring_corebasic.member.repository.MemoryMemberRepository;
 import tk.youngdk.spring_corebasic.order.domain.Order;
 
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
+//    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+//    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {

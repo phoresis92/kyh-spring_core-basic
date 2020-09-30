@@ -2,11 +2,13 @@ package tk.youngdk.spring_corebasic.member.service;
 
 import tk.youngdk.spring_corebasic.member.domain.Member;
 import tk.youngdk.spring_corebasic.member.repository.MemberRepository;
-import tk.youngdk.spring_corebasic.member.repository.MemoryMemberRepository;
 
 public class MemberServiceImpl implements MemberService {
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
 
     @Override
     public void join(Member member) {

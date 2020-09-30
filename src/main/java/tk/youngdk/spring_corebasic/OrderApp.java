@@ -3,16 +3,15 @@ package tk.youngdk.spring_corebasic;
 import tk.youngdk.spring_corebasic.member.domain.Grade;
 import tk.youngdk.spring_corebasic.member.domain.Member;
 import tk.youngdk.spring_corebasic.member.service.MemberService;
-import tk.youngdk.spring_corebasic.member.service.MemberServiceImpl;
 import tk.youngdk.spring_corebasic.order.domain.Order;
 import tk.youngdk.spring_corebasic.order.service.OrderService;
-import tk.youngdk.spring_corebasic.order.service.OrderServiceImpl;
 
 public class OrderApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+        MemberService memberService = AppConfig.memberService();
+
+        OrderService orderService = AppConfig.orderService();
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);

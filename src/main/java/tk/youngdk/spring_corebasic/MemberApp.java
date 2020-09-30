@@ -3,13 +3,12 @@ package tk.youngdk.spring_corebasic;
 import tk.youngdk.spring_corebasic.member.domain.Grade;
 import tk.youngdk.spring_corebasic.member.domain.Member;
 import tk.youngdk.spring_corebasic.member.service.MemberService;
-import tk.youngdk.spring_corebasic.member.service.MemberServiceImpl;
 
 public class MemberApp {
 
     public static void main(String[] args) {
 
-        MemberService memberService = new MemberServiceImpl();
+        MemberService memberService = AppConfig.memberService();
 
         Member m1 = new Member(1L, "m1", Grade.VIP);
 

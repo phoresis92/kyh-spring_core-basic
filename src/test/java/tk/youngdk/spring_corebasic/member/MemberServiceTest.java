@@ -1,7 +1,9 @@
 package tk.youngdk.spring_corebasic.member;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tk.youngdk.spring_corebasic.AppConfig;
 import tk.youngdk.spring_corebasic.member.domain.Grade;
 import tk.youngdk.spring_corebasic.member.domain.Member;
 import tk.youngdk.spring_corebasic.member.service.MemberService;
@@ -9,7 +11,13 @@ import tk.youngdk.spring_corebasic.member.service.MemberServiceImpl;
 
 public class MemberServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
+    MemberService memberService;
+
+
+    @BeforeEach
+    public void beforeEach(){
+        memberService = AppConfig.memberService();
+    }
 
     @Test
     void join(){
