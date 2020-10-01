@@ -16,23 +16,25 @@ import tk.youngdk.spring_corebasic.order.service.OrderServiceImpl;
 public class AppConfig {
 
     @Bean
-    public static MemberService memberService(){
+    public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
-    public static OrderService orderService(){
-        return new OrderServiceImpl(memberRepository(), discountPolicy());
-    }
-
-
-    @Bean
-    public static MemberRepository memberRepository(){
+    public MemberRepository memberRepository(){
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
-    public static DiscountPolicy discountPolicy(){
+    public OrderService orderService(){
+        System.out.println("call AppConfig.orderService");
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
+    }
+
+    @Bean
+    public DiscountPolicy discountPolicy(){
 //        return new FixDiscountPolicy();
         return new RateDiscountPolicy();
     }
