@@ -1,10 +1,13 @@
 package tk.youngdk.spring_corebasic.order.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import tk.youngdk.spring_corebasic.discount.DiscountPolicy;
 import tk.youngdk.spring_corebasic.member.domain.Member;
 import tk.youngdk.spring_corebasic.member.repository.MemberRepository;
 import tk.youngdk.spring_corebasic.order.domain.Order;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
@@ -14,6 +17,7 @@ public class OrderServiceImpl implements OrderService{
     //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
