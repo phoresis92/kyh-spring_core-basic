@@ -3,6 +3,8 @@ package tk.youngdk.spring_corebasic.order;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import tk.youngdk.spring_corebasic.AppConfig;
 import tk.youngdk.spring_corebasic.discount.RateDiscountPolicy;
 import tk.youngdk.spring_corebasic.member.domain.Grade;
@@ -23,8 +25,9 @@ public class OrderServiceTest {
 
     @BeforeEach
     public void beforeEach (){
-//        memberService = AppConfig.memberService();
-//        orderService = AppConfig.orderService();
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        memberService = ac.getBean("memberService", MemberService.class);
+        orderService = ac.getBean("orderService", OrderService.class);
     }
 
     @Test

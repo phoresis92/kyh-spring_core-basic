@@ -3,6 +3,8 @@ package tk.youngdk.spring_corebasic.member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import tk.youngdk.spring_corebasic.AppConfig;
 import tk.youngdk.spring_corebasic.member.domain.Grade;
 import tk.youngdk.spring_corebasic.member.domain.Member;
@@ -16,7 +18,8 @@ public class MemberServiceTest {
 
     @BeforeEach
     public void beforeEach(){
-//        memberService = AppConfig.memberService();
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        memberService = ac.getBean("memberService", MemberService.class);
     }
 
     @Test

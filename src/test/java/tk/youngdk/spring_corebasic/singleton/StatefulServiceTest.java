@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class StatefulServiceTest {
 
     @Test
-    @DisplayName("")
     void statefulServiceSingleton(){
         ApplicationContext ac = new AnnotationConfigApplicationContext(TestConfig.class);
 
