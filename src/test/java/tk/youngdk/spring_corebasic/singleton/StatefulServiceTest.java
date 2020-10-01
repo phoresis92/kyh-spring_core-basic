@@ -21,15 +21,15 @@ class StatefulServiceTest {
         StatefulService statefulService2 = ac.getBean(StatefulService.class);
 
         // ThreadA: userA order 10000
-        statefulService1.order("userA", 10000);
+        int userAPrice = statefulService1.order("userA", 10000);
 
         // ThreadB: userB order 20000
-        statefulService2.order("userB", 20000);
+        int userBPrice = statefulService2.order("userB", 20000);
 
         // ThreadA: Get userA order price
-        int price = statefulService1.getPrice();
+//        int price = statefulService1.getPrice();
 
-        assertThat(price).isEqualTo(10000);
+        assertThat(userAPrice).isEqualTo(10000);
     }
 
     static class TestConfig {
