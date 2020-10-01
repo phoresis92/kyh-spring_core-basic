@@ -1,6 +1,7 @@
 package tk.youngdk.spring_corebasic;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tk.youngdk.spring_corebasic.discount.DiscountPolicy;
@@ -44,6 +45,7 @@ public class AppConfig {
     }
 
     @Bean
+    @Qualifier("mainDiscountPolicy")
     public DiscountPolicy discountPolicy(){
 //        return new FixDiscountPolicy();
         return new RateDiscountPolicy();
