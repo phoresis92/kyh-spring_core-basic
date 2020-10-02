@@ -3,6 +3,9 @@ package tk.youngdk.spring_corebasic.lifeCycle;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class NetworkClient {
 
     private String url;
@@ -30,14 +33,16 @@ public class NetworkClient {
         System.out.println("close = " + url);
     }
 
-    public void init() throws Exception {
+    @PostConstruct
+    public void init() {
         // 의존관계 주입이 끝나면 호출
         System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메세지");
     }
 
-    public void close() throws Exception {
+    @PreDestroy
+    public void close() {
         System.out.println("NetworkClient.close");
         disconnect();
     }
