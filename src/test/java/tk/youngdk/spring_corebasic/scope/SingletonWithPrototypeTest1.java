@@ -4,6 +4,7 @@ import ch.qos.logback.core.net.server.Client;
 import org.assertj.core.api.Assert;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Scope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Provider;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -50,18 +52,29 @@ public class SingletonWithPrototypeTest1 {
 
     @Scope("singleton")
     static class ClientBean {
-//        private final PrototypeBean prototypeBean;
+        // Dependency Lookup 기능을 해준다 (DL)
+        // 자바 표준 Provider를 사용할지 스프링에 의존적인 ObjectProvider를 사용할지 선택하여 사용하자
+        // Provider : 자바표준,단순 = ObjectProvider : 확장기능많음
+        // implementation 'javax.inject:javax.inject:1'
 
-//        @Autowired
-//        public ClientBean(PrototypeBean prototypeBean) {
-//            this.prototypeBean = prototypeBean;
-//        }
+/*
+        private final ObjectProvider<PrototypeBean> prototypeBeanProvider;
 
         @Autowired
-        ApplicationContext ac;
+        public ClientBean(ObjectProvider<PrototypeBean> prototypeBeanProvider) {
+            this.prototypeBeanProvider = prototypeBeanProvider;
+        }
+*/
+
+        private final Provider<PrototypeBean> prototypeBeanProvider;
+
+        @Autowired
+        public ClientBean(Provider<PrototypeBean> prototypeBeanProvider) {
+            this.prototypeBeanProvider = prototypeBeanProvider;
+        }
 
         public int logic(){
-            PrototypeBean prototypeBean = ac.getBean(PrototypeBean.class);
+            PrototypeBean prototypeBean = prototypeBeanProvider.get();
             prototypeBean.addCount();
             return prototypeBean.getCount();
         }
